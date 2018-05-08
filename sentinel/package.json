@@ -53,6 +53,7 @@
     "pouchdb-core",
     "pouchdb-mapreduce",
     "@shared-libs/message-utils",
+    "@shared-libs/tombstone-utils",
     "task-utils",
     "underscore",
     "uuid",
