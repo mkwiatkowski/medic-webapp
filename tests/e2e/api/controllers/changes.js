@@ -24,18 +24,11 @@ function assertChangeIds(changes) {
   expect(_.pluck(changes, 'id').sort()).toEqual(expectedIds.sort());
 }
 
-function requestChanges(username, ids, last_seq=0) {
+function requestChanges(username, last_seq=0, feed='normal') {
   const options = {
-    path: `/_changes?since=${last_seq}`,
+    path: `/_changes?since=${last_seq}&feed=${feed}`,
     auth: `${username}:${password}`
   };
-
-  if (ids) {
-    options.path += '&filter=_doc_ids';
-    options.body = {
-      doc_ids: JSON.stringify(ids)
-    };
-  }
 
   return utils.requestOnTestDb(options);
 }
@@ -183,7 +176,7 @@ describe('changes handler', () => {
     describe('can_view_unallocated_data_records permission', () => {
 
       // test disabled for https://github.com/medic/medic-webapp/issues/4345
-      xit('should be supplied if user has this permission and district_admins_access_unallocated_messages is enabled', () =>
+      it('should be supplied if user has this permission and district_admins_access_unallocated_messages is enabled', () =>
         utils.updateSettings({district_admins_access_unallocated_messages: true})
           .then(() => utils.saveDoc({ _id:'unallocated_report', type:'data_record' }))
           .then(() => requestChanges('bob'))
@@ -284,7 +277,7 @@ describe('changes handler', () => {
 
         return utils.saveDoc(doc);
       })
-      .then(() => requestChanges('chw', null, seq_number))
+      .then(() => requestChanges('chw', seq_number))
       .then(changes => assertChangeIds(changes, 'visible'));
   });
 });
