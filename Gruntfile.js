@@ -371,7 +371,7 @@ module.exports = function(grunt) {
       },
       resetTestDatabases: {
         stderr: false,
-        cmd: ['medic-test', 'medic-audit-test']
+        cmd: ['medic-test', 'medic-test-audit']
                 .map(name => `curl -X DELETE http://admin:pass@localhost:5984/${name}`)
                 .join(' && ')
       },
