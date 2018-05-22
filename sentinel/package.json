@@ -35,11 +35,12 @@
     "jsverify": "^0.8.3"
   },
   "bundledDependencies": [
+    "@shared-libs/message-utils",
+    "@shared-libs/tombstone-utils",
     "async",
     "bikram-sambat",
     "couchdb-audit",
     "epi-week",
-    "follow",
     "google-libphonenumber",
     "gsm",
     "later",
@@ -52,8 +53,6 @@
     "pouchdb-adapter-http",
     "pouchdb-core",
     "pouchdb-mapreduce",
-    "@shared-libs/message-utils",
-    "@shared-libs/tombstone-utils",
     "task-utils",
     "underscore",
     "uuid",
