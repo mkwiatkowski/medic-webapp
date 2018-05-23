@@ -593,13 +593,6 @@ module.exports = function(grunt) {
         }
       },
     },
-    nodeunit: {
-      api: [
-        'api/tests/unit/**/*.js',
-        '!api/tests/unit/utils.js',
-        '!api/tests/unit/integration/**/*.js',
-      ]
-    },
     mochaTest: {
       unit: {
         src: [
@@ -845,7 +838,6 @@ module.exports = function(grunt) {
     'karma:admin',
     'exec:sharedLibUnit',
     'env:unitTest',
-    'nodeunit',
     'mochaTest:unit',
     'env:general',
   ]);
@@ -877,7 +869,6 @@ module.exports = function(grunt) {
     'karma:admin',
     'exec:sharedLibUnit',
     'env:unitTest',
-    'nodeunit',
     'mochaTest:unit',
   ]);
 
